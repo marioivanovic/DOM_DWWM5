@@ -1,0 +1,33 @@
+#title1{
+    color: yellowgreen;
+}
+
+#title2{
+    color: blue;
+}
+
+.secondTitle{
+    color : red
+}
+
+.test{
+    font-size: 130px;
+    font-style: italic;
+}
+
+.error{
+    border-color: red;
+}
+
+h1{
+    color: green;
+}
+
+
+#monPremierIdTitre{
+    color : orange;
+}
+
+.maPremiereClassTitre{
+    color: greenyellow;
+}
