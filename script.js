@@ -83,12 +83,12 @@ draggable.addEventListener('dragend', (event) => {
     event.target.classList.remove('dragging');
 });
 
-dropzone.addEventListener('dragover', (event) => {
-    event.preventDefault(); // Nécessaire pour permettre le drop
+dropzone.addEventListener('dragover', (e) => {
+    e.preventDefault(); // Nécessaire pour permettre le drop
 });
 
 dropzone.addEventListener('drop', (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     const dragging = document.querySelector('.dragging');
     event.target.appendChild(dragging);
 });
@@ -105,9 +105,9 @@ form.addEventListener('submit', (event) => {
     console.log("Données:", { email, password });
 });
 
-const button = document.querySelector('.btn');
+// const button = document.querySelector('.btn');
 
-button.addEventListener('click', () => { console.log("Button cliqué") })
+// button.addEventListener('click', () => { console.log("Button cliqué") })
 
 
 // const users = document.querySelector('#users');
@@ -115,11 +115,11 @@ button.addEventListener('click', () => { console.log("Button cliqué") })
 fetch('https://fakestoreapi.com/products?limit=30')
     .then(response => response.json())
     .then(products => {
-        const listOfProducts = document.querySelector('#users');
+        const listOfProducts = document.querySelector('#products');
         products.forEach(product => {
             const displayProduct = document.createElement('div');
             displayProduct.classList.add('test')
-            displayProduct.innerHTML = `<h3> Product : ${product.title}</h3>
+            displayProduct.innerHTML = `<h4> Product : ${product.title}</h4>
             <p> ${product.description}</p>
             <img src=${product.image} alt=${product.title}>`;
             listOfProducts.appendChild(displayProduct);
@@ -142,3 +142,90 @@ fetch('https://fakestoreapi.com/products?limit=30')
 // keydown 
 // submit 
 // change 
+
+// async function displayAllUsers() {
+//     try {
+//         const response = await fetch('https://jsonplaceholder.typicode.com/users');
+//         const users = await response.json();
+//         const listOfUsers = document.querySelector('.users');
+
+//         users.forEach(user => {
+//             const liste = document.createElement('li');
+//             liste.innerHTML = ` <h2>${user.name}</h2>`;
+//             listOfUsers.appendChild(liste);
+//         })
+//     }
+//     catch (err) {
+//         console.log('Erreur : ', err)
+//     }
+// }
+
+// async function displayAllUsers() {
+//     try {
+//         const response = await fetch('https://jsonplaceholder.typicode.com/users');
+//         const users = await response.json();
+//         const listOfUsers = document.querySelector('.users');
+//         const usersAdded = users.map(user =>
+//             `<h4>${user.name}</h4>`
+//         ).join('');
+//         listOfUsers.innerHTML = usersAdded;
+//     }
+//     catch (err) {
+//         console.log("Erreur : ", err);
+//     }
+// }
+
+// displayAllUsers();
+
+
+// const fruits = ['Pomme', "Poire"];
+
+// .join() => "Pomme,Poire"
+//     .join('') => "PommePoire"
+//         .join('-') => "Pomme-Poire"
+
+
+
+
+const appUsers = [{
+    nom: "Jules", age: 45, email: "jules@gmail.com"
+},
+{
+    nom: "Mathilde", age: 25, email: "math@gmail.com"
+},
+{
+    nom: "Martin", age: 20, email: "themartin@gmail.com"
+},
+{
+    nom: "Jasmine", age: 33, email: "jassbeauty@gmail.com"
+},
+{
+    nom: "Noé", age: 40, email: "nono@gmail.com"
+},
+{
+    nom: "Bethy", age: 65, email: "bethymamie@gmail.com"
+},
+{
+    nom: "Sarah", age: 41, email: "sarah.pro@gmail.com"
+},
+{
+    nom: "Kevin", age: 43, email: "kevstillyoung@gmail.com"
+},]
+
+const button = document.getElementById('addUser');
+const listAppUsers = document.querySelector('.personsList')
+
+let index = 0;
+button.addEventListener('click', function () {
+    if (index < appUsers.length) {
+        const userOfApp = appUsers[index];
+        const card = document.createElement('div');
+
+        card.innerHTML = `<h2>${userOfApp.nom}</h2>`;
+        listAppUsers.appendChild(card);
+        // index += 1;
+        index++;
+    } else {
+        alert("Oops ! Aucun user à ajouter");
+    }
+})
