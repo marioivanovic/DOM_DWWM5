@@ -112,20 +112,20 @@ form.addEventListener('submit', (event) => {
 
 // const users = document.querySelector('#users');
 
-fetch('https://fakestoreapi.com/products?limit=30')
-    .then(response => response.json())
-    .then(products => {
-        const listOfProducts = document.querySelector('#products');
-        products.forEach(product => {
-            const displayProduct = document.createElement('div');
-            displayProduct.classList.add('test')
-            displayProduct.innerHTML = `<h4> Product : ${product.title}</h4>
-            <p> ${product.description}</p>
-            <img src=${product.image} alt=${product.title}>`;
-            listOfProducts.appendChild(displayProduct);
-        })
-    })
-    .catch(error => console.log(error))
+// fetch('https://fakestoreapi.com/products?limit=30')
+//     .then(response => response.json())
+//     .then(products => {
+//         const listOfProducts = document.querySelector('#products');
+//         products.forEach(product => {
+//             const displayProduct = document.createElement('div');
+//             displayProduct.classList.add('test')
+//             displayProduct.innerHTML = `<h4> Product : ${product.title}</h4>
+//             <p> ${product.description}</p>
+//             <img src=${product.image} alt=${product.title}>`;
+//             listOfProducts.appendChild(displayProduct);
+//         })
+//     })
+//     .catch(error => console.log(error))
 
 
 // produits.forEach((data, index) => {
@@ -213,19 +213,211 @@ const appUsers = [{
 },]
 
 const button = document.getElementById('addUser');
-const listAppUsers = document.querySelector('.personsList')
+const listAppUsers = document.querySelector('.personsList');
+const compteurContent = document.querySelector('.compteur');
 
 let index = 0;
-button.addEventListener('click', function () {
-    if (index < appUsers.length) {
-        const userOfApp = appUsers[index];
-        const card = document.createElement('div');
+let numberUsers = 0;
 
-        card.innerHTML = `<h2>${userOfApp.nom}</h2>`;
-        listAppUsers.appendChild(card);
-        // index += 1;
-        index++;
-    } else {
-        alert("Oops ! Aucun user à ajouter");
+// Créer un compteur qui va s'incrémenter au clique (et à l'ajout d'un user) du button.
+
+function updateCompt() {
+    compteurContent.textContent = `Users : ${numberUsers}`;
+};
+
+
+// button.addEventListener('click', function () {
+//     if (index < appUsers.length) {
+//         const userOfApp = appUsers[index];
+//         const card = document.createElement('div');
+
+//         card.innerHTML = `<h2>${userOfApp.nom}</h2>
+//         <button class="delete">Supprimer user</button>`;
+
+//         card.querySelector('.delete').addEventListener('click', () => {
+//             card.remove();
+//             numberUsers--;
+//             updateCompt();
+//         });
+
+//         listAppUsers.appendChild(card);
+//         // index += 1;
+//         index++;
+//         numberUsers++;
+//         updateCompt();
+//     } else {
+//         alert("Oops ! Aucun user à ajouter");
+//     }
+// })
+
+// const old = document.querySelector('.old');
+// const child = document.querySelector('#children');
+
+
+// Propagation
+// child.addEventListener('click', () => {
+//     console.log("Clique à l'enfant");
+// })
+
+// old.addEventListener('click', () => {
+//     console.log("Clique au parent");
+// })
+
+// Délégation
+// document.querySelectorAll('.button').forEach(function (button) {
+//     button.addEventListener('click', () => {
+//         console.log('bouton cliqué');
+//     })
+// })
+
+// const container = document.getElementById('container');
+// container.addEventListener('click', (e) => {
+//     if (e.target.classList.contains('btn')) {
+//     console.log('Bouton cliqué')
+// }
+// })
+
+// const mouseBox = document.querySelector('.mouseBox');
+// const keyInput = document.querySelector('.doKey');
+// const displayKeyNumber = document.querySelector('.count');
+
+// mouseBox.addEventListener('mouseover', function () {
+//     mouseBox.style.backgroundColor = 'red';
+//     mouseBox.textContent = 'Coucou tout le monde, oubliez pas de signer avant 13h !!';
+// });
+
+// mouseBox.addEventListener('mouseout', function () {
+//     mouseBox.style.backgroundColor = "white";
+//     mouseBox.textContent = 'Mouse box';
+// });
+
+// keyInput.addEventListener('keydown', function (event) {
+//     console.log("touche down:", event.key);
+
+// })
+
+// keyInput.addEventListener('keyup', function (e) {
+//     displayKeyNumber.textContent = `${this.value.length}`;
+//     console.log("this", this);
+//     console.log("this.value", this.value);
+//     console.log("keyInput.value", keyInput.value);
+//     console.log("e.target.value", e.target.value);
+// })
+
+const newStudent = {
+    name: "Julie",
+    age: 35,
+    introduce: function () {
+        console.log(`My name is ${this.name} et j'ai ${this.age} ans !`)
     }
-})
+}
+
+const newStudent2 = {
+    name: "Bobby",
+    age: 2,
+    introduce: function () {
+        console.log(`My name is ${this.name} et j'ai ${this.age} ans !`)
+    }
+}
+
+newStudent.introduce();
+// My name is Julie et j'ai 35 ans !
+
+newStudent2.introduce();
+// My name is Bobby et j'ai 2 ans !
+
+const julieSaysHello = newStudent.introduce;
+julieSaysHello();
+// Avec bind : My name is Julie et j'ai 35 ans !
+// Sans bind : My name is  et j'ai undefined ans !
+
+const julieSaysHelloAgain = newStudent.introduce.bind(newStudent);
+julieSaysHelloAgain();
+// My name is Julie et j'ai 35 ans !
+
+
+
+// class IncrementButton {
+//     constructor() {
+//         this.increment = 0;
+//     }
+
+//     incrementation() {
+//         this.increment++;
+//     }
+// }
+
+// const myIncrementButton1 = new IncrementButton();
+// const myIncrementButton2 = new IncrementButton();
+
+// button.addEventListener('click', myIncrementButton.incrementation);
+
+
+// button.addEventListener('click', myIncrementButton.incrementation.bind(myIncrementButton))
+
+// class Quick {
+//     constructor(nom) {
+//         this.nom = nom;
+//         this.address = 0;
+//         this.employee = 0;
+//         this.chairColor = blue;
+//         this.menu = menu;
+
+//     }
+//     addRank() {
+//         this.rank += 1;
+//         console.log(`${this.nom} est au rang ${this.rank}`)
+//     }
+// }
+
+// const quick1 = new Quick("Quick Montreuil", "14, rue de la Beaune 93100 Montreuil", "30");
+// const quick2 = new Quick("Quick Marseille");
+// const quick30000000 = new Quick("Quick Quimper");
+
+// class Hero {
+//     constructor(nom, vie) {
+//         this.nom = nom;
+//         this.vie = vie;
+//         this.niveau = 1;
+//     }
+// }
+
+// class Magician extends Hero {
+//     constructor(nom) {
+//         this.sorts = ['Glace', 'Tornade', 'Boule de feu', 'Empoisonnement']
+//     }
+
+//     jeterSort(sort) {
+//         if (this.sorts.includes(sort)) {
+//             this.vie -= 10;
+//             console.log(`${this.nom} jette ${sort}`)
+//         } else {
+//             console.log(`${this.nom} n'as pas ce sort`)
+//         }
+//     }
+// }
+
+// const magicien = new Magician("Hercule");
+
+
+// magicien.jeterSort('Tempete');
+
+// Hercule jette Tornade;
+
+
+
+
+
+
+// EXERCICES 
+
+
+
+
+// Exercice 1 : Changer la couleur d'un paragraphe au clic
+// Exercice 2 : Changer de couleur et de texte au survol de la souris
+// Exercice 3 : Afficher le texte en temps réel. (afficher le text de l'input dans un paragraphe par exemple)
+// Exercice 4 : Compter le nombre de caractères au keyup, afficher le nombre dans un paragraphe. BONUS : Ajouter une limite à 50 caractères. 
+// Exercice 5 : Creer une class, ajouter un event listener au bouton, à chaque clic, on incrémente puis on affiche la nouvelle valeur dans une div. (rajouter du style CSS)
+// Exercice 6 : Creer un score initial de 0, séléctionner la zone de jeu et le score, au survol, augmenter le score, à la sortie de zone, changer la couleur. Creer une nouvelle instance.
+
