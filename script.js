@@ -409,15 +409,26 @@ julieSaysHelloAgain();
 
 
 
-// EXERCICES 
-
+// EXERCICES A PUSH SUR GITHUB
 
 
 
 // Exercice 1 : Changer la couleur d'un paragraphe au clic
 // Exercice 2 : Changer de couleur et de texte au survol de la souris
 // Exercice 3 : Afficher le texte en temps réel. (afficher le text de l'input dans un paragraphe par exemple)
-// Exercice 4 : Compter le nombre de caractères au keyup, afficher le nombre dans un paragraphe. BONUS : Ajouter une limite à 50 caractères. 
+// input => div ou p
+// Exercice 4 : Compter le nombre de caractères au keyup, afficher le nombre dans un paragraphe. BONUS : Ajouter une limite à 50 caractères.
 // Exercice 5 : Creer une class, ajouter un event listener au bouton, à chaque clic, on incrémente puis on affiche la nouvelle valeur dans une div. (rajouter du style CSS)
 // Exercice 6 : Creer un score initial de 0, séléctionner la zone de jeu et le score, au survol, augmenter le score, à la sortie de zone, changer la couleur. Creer une nouvelle instance.
+
+
+
+// Pour lundi 23/12 
+
+// Faire une to-do list en JS.
+// TO HAVE : 
+// ajouter des tâches au click et ou la touche Entrer. 
+// supprimer des tâches au click.
+// ajouter un compteur qui va s'incrémenter à l'ajout d'une tâche et décrementer à la suppression d'une tâche.
+// ajouter du style à la liste ! 
 
